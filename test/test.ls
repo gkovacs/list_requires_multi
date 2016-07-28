@@ -1,6 +1,4 @@
-{
-  list_requires
-} = require('../index')
+list_requires = require('../index')
 
 require! {
   chai

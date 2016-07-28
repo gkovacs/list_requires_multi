@@ -22,7 +22,5 @@
     });
     return output;
   };
-  module.exports = {
-    list_requires: list_requires
-  };
+  module.exports = list_requires;
 }).call(this);
