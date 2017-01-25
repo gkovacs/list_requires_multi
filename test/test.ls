@@ -14,12 +14,12 @@ describe 'all tests', ->
 
   specify 'list_requires bare', (done) ->
     result = list_requires('require("foo")')
-    result.should.eql(['foo'])
+    result.should.eql({require: ['foo']})
     done()
 
   specify 'list_requires with assignment', (done) ->
     result = list_requires('bar = require("foo")')
-    result.should.eql(['foo'])
+    result.should.eql({require: ['foo']})
     done()
 
   specify 'list_requires function', (done) ->
@@ -28,7 +28,7 @@ describe 'all tests', ->
       return require("moo")
     }
     """
-    result.should.eql(['moo'])
+    result.should.eql({require: ['moo']})
     done()
 
   specify 'list_requires multiple', (done) ->
@@ -39,6 +39,6 @@ describe 'all tests', ->
     require("bar")
     var c = require("non") ? require("lala") : require("nana")
     """
-    result.length.should.equal(5)
-    result.should.include.members(['moo', 'bar', 'non', 'lala', 'nana'])
+    result.require.length.should.equal(5)
+    result.require.should.include.members(['moo', 'bar', 'non', 'lala', 'nana'])
     done()
