@@ -14,8 +14,8 @@ npm install list_requires_multi
 var list_requires_multi = require('list_requires_multi');
 
 var code = "a=require('foo'); b=require('bar')";
-console.log(list_requires_multi(code), ['requires']);
-// will output {'requires': ['foo', 'bar']}
+console.log(list_requires_multi(code), ['require']);
+// will output {'require': ['foo', 'bar']}
 ```
 
 ## License
