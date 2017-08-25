@@ -51,3 +51,22 @@ describe 'all tests', ->
     """
     result.should.eql({require: ['moo']})
     done()
+
+  specify 'list_requires singlequote', (done) ->
+    result = list_requires("require('foo')")
+    result.should.eql({require: ['foo']})
+    done()
+
+  specify 'list_requires template', (done) ->
+    result = list_requires("require(`foo`)")
+    result.should.eql({require: ['foo']})
+    done()
+
+  specify 'list_requires template multiline', (done) ->
+    result = list_requires("""require(`
+    line1
+    line2
+    `)
+    """)
+    result.should.eql({require: ['\nline1\nline2\n']})
+    done()
